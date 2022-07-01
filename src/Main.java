@@ -7,7 +7,7 @@ public class Main {
         String myString = scan.next();
         scan.close();
 
-        System.out.println("Palindrom: " + PalindromSayi.palindromTamamlama(myString));
+        System.out.println("Sonuc: " + PalindromSayi.palindromTamamlama(myString));
 
 
     }
