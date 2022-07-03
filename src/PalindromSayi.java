@@ -1,4 +1,6 @@
 public class PalindromSayi {
+
+    //! Palindrom sayiya tamamlayan metod
     public static String palindromTamamlama(String myStr) {
         //? girdinin uzunlugunu alir
         int len = myStr.length();
@@ -16,7 +18,7 @@ public class PalindromSayi {
         return result;
     }
 
-    //? Girilen string ifadenin palindrom olup olmadigini sorgulayan fonksiyon
+    //! Girilen string ifadenin palindrom olup olmadigini sorgulayan fonksiyon
     public static boolean palindromMu(String myNum) {
 
         String result = tersCevir(myNum);
@@ -28,7 +30,7 @@ public class PalindromSayi {
         return false;
     }
 
-    //? Girilen string ifadeyi ters ceviren fonksiyon.
+    //! Girilen string ifadeyi ters ceviren fonksiyon.
     public static String tersCevir(String reverseStr) {
         String result = "";
         for (int i = reverseStr.length() - 1; i >= 0; i--) {
@@ -37,6 +39,7 @@ public class PalindromSayi {
         return result;
     }
 
+    //! Olusacak hedef palindrom sayiyi gosteren metod
     public static void palindromSayim(String myStr) {
         int len = myStr.length();
         String palindrom = myStr + tersCevir(myStr.substring(0, len - 1));
