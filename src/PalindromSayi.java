@@ -1,36 +1,46 @@
 public class PalindromSayi {
     public static String palindromTamamlama(String myStr) {
-        String retval = "";
-        int myNum;
-        try {
-            myNum = Integer.valueOf(myStr);
-        } catch (NumberFormatException e) {
-            return "Girilen String ifade sayisal degildir.";
-        }
-        if (palindromMu(myNum)) {
+        //? girdinin uzunlugunu alir
+        int len = myStr.length();
+
+        //? hedeflenen palindrom sayi
+        String palindrom = myStr + tersCevir(myStr.substring(0, len - 1));
+
+        //? palindrom sayiyi olusturmak icin fark
+        Double fark = Double.valueOf(palindrom) - Double.valueOf(myStr);
+
+        String result = String.format("%.0f", fark);
+        if (palindromMu(myStr)) {
             return "0";
-        } else {
-            for (int i = 1; i < myNum; i++) {
-                myNum++;
-                if (palindromMu(myNum)) {
-                    retval = String.valueOf(i);
-                    break;
-                }
-            }
         }
-        return retval;
+        return result;
     }
 
-    public static boolean palindromMu(int myNum) {
-        String newStr = String.valueOf(myNum);
-        String result = "";
-        for (int i = newStr.length() - 1; i >= 0; i--) {
-            result += newStr.charAt(i);
-        }
+    //? Girilen string ifadenin palindrom olup olmadigini sorgulayan fonksiyon
+    public static boolean palindromMu(String myNum) {
 
-        if (newStr.equals(result)) {
+        String result = tersCevir(myNum);
+
+        //? 0-9 arasi tum sayilar palindrom oldugu için kontrol eklendi
+        if (myNum.equals(result) || myNum.length() == 1) {
             return true;
         }
         return false;
+    }
+
+    //? Girilen string ifadeyi ters ceviren fonksiyon.
+    public static String tersCevir(String reverseStr) {
+        String result = "";
+        for (int i = reverseStr.length() - 1; i >= 0; i--) {
+            result += reverseStr.charAt(i);
+        }
+        return result;
+    }
+
+    public static void palindromSayim(String myStr) {
+        int len = myStr.length();
+        String palindrom = myStr + tersCevir(myStr.substring(0, len - 1));
+
+        System.err.println("Olusan palindrom sayi:\t" + palindrom);
     }
 }
